@@ -1,4 +1,6 @@
-Class LeafNode(HTMLNode):
+from htmlnode import HTMLNode
+
+class LeafNode(HTMLNode):
     def __init__(self, tag: str, value: str, props: dict = None):
         super().__init__(tag, value, children=[], props=props)  # Leaf nodes have no children
 
