@@ -24,3 +24,8 @@ def extract_markdown_images(text):
     matches = re.findall(pattern, text)
     return matches
 
+# extracts markdown links instead of images. It should return tuples of anchor text and URLs.
+def extract_markdown_links(text):
+    pattern = r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)"
+    matches = re.findall(pattern, text)
+    return matches
