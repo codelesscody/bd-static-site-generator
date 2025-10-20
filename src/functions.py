@@ -30,6 +30,15 @@ def extract_markdown_links(text):
     matches = re.findall(pattern, text)
     return matches
 
+
+# [
+#     TextNode("This is text with a link ", TextType.TEXT),
+#     TextNode("to boot dev", TextType.LINK, "https://www.boot.dev"),
+#     TextNode(" and ", TextType.TEXT),
+#     TextNode(
+#         "to youtube", TextType.LINK, "https://www.youtube.com/@bootdotdev"
+#     ),
+# ]
 def split_nodes_image(old_nodes):
     new_nodes = []
     for node in old_nodes:
