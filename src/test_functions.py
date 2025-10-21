@@ -1,4 +1,4 @@
-from functions import split_nodes_delimiter, extract_markdown_images, split_nodes_image
+from functions import split_nodes_delimiter, extract_markdown_images, split_nodes_image, text_to_textnodes
 from textnode import TextNode, TextType
 import unittest
 
@@ -52,3 +52,14 @@ class TestFunctions(unittest.TestCase):
             ],
             new_nodes,
         )
+
+    def test_text_to_textnodes(self):
+        text = "This is text with a link [to boot dev](https://www.boot.dev) and an image ![alt text](https://i.imgur.com/zjjcJKZ.png)"
+        nodes = [
+            TextNode("This is text with a link ", TextType.TEXT),
+            TextNode("to boot dev", TextType.LINK, "https://www.boot.dev"),
+            TextNode(" and an image ", TextType.TEXT),
+            TextNode("alt text", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+        ]
+        result_nodes = text_to_textnodes(text)
+        self.assertListEqual(nodes, result_nodes)
