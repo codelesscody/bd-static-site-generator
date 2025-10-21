@@ -81,3 +81,9 @@ def split_nodes_link(old_nodes):
             new_nodes.append(node)
     return new_nodes
 
+# return a list of nodes given a raw text input, where each text is a TextNode of the appropriate type.
+def text_to_textnodes(text):
+    nodes = [TextNode(text, TextType.TEXT)]
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    return nodes
