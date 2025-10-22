@@ -1,4 +1,4 @@
-from functions import split_nodes_delimiter, extract_markdown_images, split_nodes_image, text_to_textnodes
+from functions import split_nodes_delimiter, extract_markdown_images, split_nodes_image, text_to_textnodes, markdown_to_blocks
 from textnode import TextNode, TextType
 import unittest
 
@@ -63,3 +63,23 @@ class TestFunctions(unittest.TestCase):
         ]
         result_nodes = text_to_textnodes(text)
         self.assertListEqual(nodes, result_nodes)
+
+    def test_markdown_to_blocks(self):
+        md = """
+This is **bolded** paragraph
+
+This is another paragraph with _italic_ text and `code` here
+This is the same paragraph on a new line
+
+- This is a list
+- with items
+"""
+        blocks = markdown_to_blocks(md)
+        self.assertEqual(
+            blocks,
+            [
+                "This is **bolded** paragraph",
+                "This is another paragraph with _italic_ text and `code` here\nThis is the same paragraph on a new line",
+                "- This is a list\n- with items",
+            ],
+        )

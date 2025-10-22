@@ -87,3 +87,12 @@ def text_to_textnodes(text):
     nodes = split_nodes_image(nodes)
     nodes = split_nodes_link(nodes)
     return nodes
+
+# take a raw Markdown string (representing a full document) as input and returns a list of "block" strings.
+# strip any leading or trailing whitespace from each block.
+# remove any empty blocks due to consecutive newlines.
+# blocks should be split by DOUBLE newlines (\n\n). 
+def markdown_to_blocks(markdown_text):
+    raw_blocks = markdown_text.split("\n\n")
+    blocks = [block.strip() for block in raw_blocks if block.strip()]
+    return blocks
