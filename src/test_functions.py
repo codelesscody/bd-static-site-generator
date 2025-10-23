@@ -64,6 +64,7 @@ class TestFunctions(unittest.TestCase):
         result_nodes = text_to_textnodes(text)
         self.assertListEqual(nodes, result_nodes)
 
+    # test markdown to blocks -- should split markdown into blocks
     def test_markdown_to_blocks(self):
         md = """
 This is **bolded** paragraph
